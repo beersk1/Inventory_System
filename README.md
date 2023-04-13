@@ -27,7 +27,7 @@
 
 
 ## Schema
-![](assets/Schema.png)
+![](assets/schema.png)
 
 ## ER Diagram
 ![](assets/er.jpg)
