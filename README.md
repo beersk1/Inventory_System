@@ -2,7 +2,7 @@
 
 ![Python version](https://img.shields.io/badge/SQL-lightgrey)
 ![GitHub last commit](https://img.shields.io/github/last-commit/beersk1/Inventory_System)
-![GitHub repo size](https://img.shields.io/badge/Repo%20Size-19.4%20MB-blue)
+
 ![License](https://img.shields.io/badge/License-MIT-green)
 
 # Inventory_System
