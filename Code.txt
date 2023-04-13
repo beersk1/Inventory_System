@@ -1,0 +1,273 @@
+
+create table Ships(Ship_ID int, 
+Exp_By date not null, 
+Order_Id int,
+ primary key (Ship_ID)
+);
+
+create table Orders(Order_Id int, 
+Sup_Id int, 
+Prod_Id int,
+Store_Id int, 
+primary key (Order_Id)
+);
+                    
+create table Store(Store_Id int,
+State varchar(255), 
+City varchar(255), 
+primary key (Store_Id)
+);
+                    
+create table Supplier(Sup_Id int, 
+Prod_Id int,
+S_name varchar (255), 
+State varchar (255), 
+City varchar (255), 
+primary key (Sup_Id,Prod_Id)
+);
+                      
+create table Storemanager(Man_Id int, F_name varchar (255), L_name varchar (255), 
+                           contact int, age int, gender int, Store_Id int, 
+                           primary key (Man_Id), 
+                           foreign key (Store_Id) references Store);
+                           
+                           
+
+create table Category(Cat_id int,
+Cat_name varchar,
+primary key(Cat_id)
+);
+
+create table Brand(
+brand_id int, 
+Brand_name varchar,
+primary key(brand_id)
+);
+
+create table Manufacturer(M_ID int, 
+brand_id int, 
+State varchar, 
+City varchar,
+primary key(M_ID),
+foreign key (Brand_ID) references Brand
+);
+
+create table Product(Prod_ID int, 
+Brand_ID int,
+Cat_ID int,
+Prod_name varchar,
+primary key (Prod_ID),
+foreign key (Brand_ID) references Brand,
+foreign key (Cat_ID) references Category
+);
+
+create table Inventory(Inv_ID int, Store_id int , Prod_ID int,Qty int,
+primary key(Inv_ID),
+foreign key (Prod_ID) references Product,
+foreign key (Store_id) references Store
+);
+
+
+insert into Store values(50,'Andhra Pradesh','Hydrebad');
+insert into Store values(51,'Arunachal Pradesh','Itanagar');
+insert into Store values(52,'Assam','Dispur');
+insert into Store values(53,'Bihar','Patna');
+insert into Store values(54,'Chhattisgarh','Raipur');
+insert into Store values(55,'Goa','Panaji');
+insert into Store values(56,'Gujarat','Ghandinagar');
+insert into Store values(57,'Haryana','Chandigarh');
+insert into Store values(58,'Himachal Pradesh','Shimla');
+insert into Store values(59,'Jharkhand','Ranchi');
+insert into Store values(60,'Karnataka','Bengaluru');
+insert into Store values(61,'Kerala','Thiruvantapuram');
+insert into Store values(62,'Madhya Pradesh','Bhopal');
+insert into Store values(63,'Maharashtra','Mumbai');
+insert into Store values(64,'Manipur','Imphal');
+insert into Store values(65,'Meghalaya','Shillong');
+insert into Store values(66,'Rajasthan','Jaipur');
+insert into Store values(67,'Tamil Nadu','Chennai');
+insert into Store values(68,'Uttar Pradesh','Lucknow');
+insert into Store values(69,'West Bengal','Kolkata');
+
+insert into Category values (1001, 'Food');
+insert into Category values (1002, 'Beverage');
+insert into Category values (1003, 'Electronics');
+insert into Category values (1004, 'Clothing');
+insert into Category values (1005, 'Home');
+insert into Category values (1006, 'Personal Care Hygiene');
+
+insert into Brand values(711,'Amul');
+insert into Brand values(712,'Britannia');
+insert into Brand values(713,'Nestle');
+insert into Brand values(714,'Kissan');
+insert into Brand values(715,'Parle');
+insert into Brand values(716,'Coca-Cola');
+insert into Brand values(717,'RedBull');
+insert into Brand values(718,'Pepsi Co.');
+insert into Brand values(719,'Sony');
+insert into Brand values(720,'Apple');
+insert into Brand values(721,'Samsung');
+insert into Brand values(722,'LG');
+insert into Brand values(723,'Nike');
+insert into Brand values(724,'Adidas');
+insert into Brand values(725,'Levi');
+insert into Brand values(726,'Bombay Dyeing');
+insert into Brand values(727,'Fab India');
+insert into Brand values(728,'Colgate');
+insert into Brand values(729,'Dettol');
+insert into Brand values(730,'Himalayas');
+
+insert into Manufacturer values(421,711,'Pune','Maharashtra');
+insert into Manufacturer values(422,712,'Aizawl','Mizoram');
+insert into Manufacturer values(423,713,'Chennai','Tamil Nadu');
+insert into Manufacturer values(424,714,'Dehradun','Uttarakhand');
+insert into Manufacturer values(425,715,'Thiruvananthapuram','Kerala');
+insert into Manufacturer values(426,716,'Bhopal','Madhya Pradesh');
+insert into Manufacturer values(427,717,'Pune','Maharashtra');
+insert into Manufacturer values(428,718,'Ranchi','Jharkhand');
+insert into Manufacturer values(429,719,'Pune','Maharashtra');
+insert into Manufacturer values(430,720,'Ranchi','Jharkhand');
+insert into Manufacturer values(431,721,'Jaipur','Rajasthan');
+insert into Manufacturer values(432,722,'Pune','Maharashtra');
+insert into Manufacturer values(433,723,'Patna','Bihar');
+insert into Manufacturer values(434,724,'Pune','Maharashtra');
+insert into Manufacturer values(435,725,'Jaipur','Rajasthan');
+insert into Manufacturer values(436,726,'Raipur','Chhattisgarh');
+insert into Manufacturer values(437,727,'Bhopal','Madhya Pradesh');
+insert into Manufacturer values(438,728,'Dehradun','Uttarakhand');
+insert into Manufacturer values(439,729,'Patna','Bihar');
+insert into Manufacturer values(440,730,'Pune','Maharashtra');
+
+
+insert into Product values(301,711,1001,'Amul Butter');
+insert into Product values(302,712,1001,'Britannia Digestive Biscuits');
+insert into Product values(303,713,1001,'Nestle Kitkats');
+insert into Product values(304,714,1001,'Kissan Strawberry Jam');
+insert into Product values(305,715,1001,'Parle-G Biscuits');
+insert into Product values(306,716,1002,'Diet Coke');
+insert into Product values(307,717,1002,'Redbull Peach Edition');
+insert into Product values(308,718,1002,'Pepsi');
+insert into Product values(309,719,1003,'Playstation 5');
+insert into Product values(310,720,1003,'Iphone 13 Pro Max ');
+insert into Product values(311,721,1003,'Samsung Smart Fridge');
+insert into Product values(312,722,1003,'72 inch 4K UHD TV');
+insert into Product values(313,723,1004,'Nike Mercurial ');
+insert into Product values(314,724,1004,'Adidas Hoodie Large');
+insert into Product values(315,725,1004,'Levi Jeans Medium');
+insert into Product values(316,726,1005,'Large Queen Size Bedsheet');
+insert into Product values(317,727,1005,'Cotton Curtains Small');
+insert into Product values(318,728,1006,'Colgate Sensitive Toothpaste');
+insert into Product values(319,729,1006,'Hand Sanitizer');
+insert into Product values(320,730,1006,'Hair Shampooo');
+
+insert into Inventory values(2001,50,301,185 );
+insert into Inventory values(2002,69,313,303 );
+insert into Inventory values(2003,55,319,85 );
+insert into Inventory values(2004,68,307,46 );
+insert into Inventory values(2005,54,305,248 );
+insert into Inventory values(2006,53,311,648 );
+insert into Inventory values(2007,67,312,96 );
+insert into Inventory values(2008,52,319,300 );
+insert into Inventory values(2009,51,320,750 );
+insert into Inventory values(2010,63,302,225 );
+insert into Inventory values(2011,60,305,50 );
+insert into Inventory values(2012,64,303,9 );
+insert into Inventory values(2013,59,309,23 );
+insert into Inventory values(2014,65,314,123 );
+insert into Inventory values(2015,58,315,201 );
+insert into Inventory values(2016,66,317,108 );
+insert into Inventory values(2017,57,308,172 );
+insert into Inventory values(2018,62,306,67 );
+insert into Inventory values(2019,61,319,36 );
+insert into Inventory values(2020,56,311,13 );
+
+insert into Supplier values(101,301,'John','Andhra Pradesh','Hydrebad');
+insert into Supplier values(102,302,'Sam','Arunachal Pradesh','Itanagar');	
+insert into Supplier values(103,303,'Steven','Assam','Dispur');	
+insert into Supplier values(104,304,'Maxi','Bihar','Patna');
+insert into Supplier values(105,305,'helen','Chhattisgarh','Raipur');
+insert into Supplier values(106,306,'Miranda','Goa','Panaji');
+insert into Supplier values(107,307,'Jeff','Gujarat','Ghandinagar');
+insert into Supplier values(108,308,'Dupont','Haryana','Chandigarh');
+insert into Supplier values(109,309,'Anthony','Himachal Pradesh','Shimla');
+insert into Supplier values(110,310,'Mark','Jharkhand','Ranchi');
+insert into Supplier values(111,311,'Natasha','Karnataka','Bengaluru' );
+insert into Supplier values(112,312,'Jim','Kerala','Thiruvantapuram');
+insert into Supplier values(113,313,'Pam','Madhya Pradesh','Bhopal');
+insert into Supplier values(114,314,'Toby','Maharashtra','Mumbai');
+insert into Supplier values(115,315,'Michael','Manipur','Imphal');;
+insert into Supplier values(116,316,'Smith','Meghalaya','Shillong');
+insert into Supplier values(117,317,'Alexis','Rajasthan','Jaipur');
+insert into Supplier values(118,318,'Mariah','Tamil Nadu','Chennai');
+insert into Supplier values(119,319,'Samuel','Uttar Pradesh','Lucknow');
+insert into Supplier values(120,320,'Carey','West Bengal','Kolkata');
+
+
+
+
+insert into Storemanager values(201,'Krish','Suri',700,19,1,50);
+insert into Storemanager values(202,'Kabeer','Bhagat',701,20,1,51);	
+insert into Storemanager values(203,'Aarzish','Mugaseth',702,21,1,52);
+insert into Storemanager values(204,'Shaurya','Motwani',703,22,1,53);	
+insert into Storemanager values(205,'Johaan','Duckworth',704,23,1,54);	
+insert into Storemanager values(206,'Jordan','Almeida',705,24,1,55);	
+insert into Storemanager values(207,'Vedant','sonii',706,25,1,56);	
+insert into Storemanager values(208,'Shloka','Chabbriaa',707,26,2,57);
+insert into Storemanager values(209,'Ranvir','Punater',708,27,1,58);
+insert into Storemanager values(210,'Kavya','Shah',709,28,2,59);	
+insert into Storemanager values(211,'Sachi','Khandelwal',710,29,2,60);	
+insert into Storemanager values(212,'Riz','Lala',711,30,1,61);	
+insert into Storemanager values(213,'Aashna','Karia',712,31,2,62);
+insert into Storemanager values(214,'Diya','Ponappa',713,32,2,63);	
+insert into Storemanager values(215,'Aryaan','Majumdar',714,33,1,64);	
+insert into Storemanager values(216,'Krishiv','Soni',715,34,1,65);
+insert into Storemanager values(217,'Pranav','Kora',716,35,1,66); 	
+insert into Storemanager values(218,'Ria','Soni',717,36,2,67);	
+insert into Storemanager values(219,'Deepan','Mehta',718,37,1,68);	
+insert into Storemanager values(220,'Jash','Ghosalia',719,38,1,69);
+
+insert into Ships values(70,'2021-01-01',1001);
+insert into Ships values(71,'2021-01-02',1002);  
+insert into Ships values(72,'2021-01-03',1003);  
+insert into Ships values(73,'2021-01-04',1004);  
+insert into Ships values(74,'2021-01-05',1005);  
+insert into Ships values(75,'2021-01-06',1006);  
+insert into Ships values(76,'2021-01-07',1007);  
+insert into Ships values(77,'2021-01-08',1008);  
+insert into Ships values(78,'2021-01-09',1009);  
+insert into Ships values(79,'2021-01-10',1010);  
+insert into Ships values(80,'2021-01-11',1011);
+insert into Ships values(81,'2021-01-12',1012);  
+insert into Ships values(82,'2021-01-13',1013);  
+insert into Ships values(83,'2021-01-14',1014);  
+insert into Ships values(84,'2021-01-15',1015);  
+insert into Ships values(85,'2021-01-16',1016);  
+insert into Ships values(86,'2021-01-17',1017);  
+insert into Ships values(87,'2021-01-18',1018);  
+insert into Ships values(88,'2021-01-19',1019);  
+insert into Ships values(89,'2021-01-20',1020);
+
+
+insert into Orders values(1001,101,301,50);
+insert into Orders values(1002,102,302,51);
+insert into Orders values(1003,103,303,52);
+insert into Orders values(1004,104,304,53);
+insert into Orders values(1005,105,305,54);
+insert into Orders values(1006,106,306,55);
+insert into Orders values(1007,107,307,56);
+insert into Orders values(1008,108,308,57);
+insert into Orders values(1009,109,309,58);
+insert into Orders values(1010,110,310,59);
+insert into Orders values(1011,111,311,60);
+insert into Orders values(1012,112,312,61);
+insert into Orders values(1013,113,313,62);
+insert into Orders values(1014,114,314,63);
+insert into Orders values(1015,115,315,64);
+insert into Orders values(1016,116,316,65);
+insert into Orders values(1017,117,317,66);
+insert into Orders values(1018,118,318,67);
+insert into Orders values(1019,119,319,68);
+insert into Orders values(1020,120,320,69);
+
+
+
