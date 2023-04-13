@@ -14,10 +14,7 @@
   - [ER Diagram](#advantages)
   - [Advantages](#advantages)
   - [Conclusion](#conclusion)
-  - 
-
-
-
+  
 
 ## Introduction
 
@@ -30,7 +27,7 @@
 
 
 ## Schema
-![](assets/Schema.jpg)
+![](assets/Schema.png)
 
 ## ER Diagram
 ![](assets/er.jpg)
